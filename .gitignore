@@ -1,3 +1,2 @@
 env_variables
 node_modules
-git pull --rebase origin master
