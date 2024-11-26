@@ -19,7 +19,7 @@ export const getQuestionById = async (req, res, next) => {
         const id = req.params.id;
         const question = await Question
             .findOne({ _id: id })
-            .select('title description sampleInput sampleOutput addedBy')
+            .select('title description sampleInput sampleOutput difficulty acceptance addedBy')
             .populate('addedBy', 'username');
 
         if (!question) return res.status(404).json({ message: "Question Not Found!" });

@@ -5,7 +5,7 @@ import Question from '../models/Question.js';
 // @route GET api/v1/submissions
 export const getCurrentUserSubmissions = async (req, res, next) => {
     try {
-        const submissions = await Submission.find({ user: req.user.id }).populate('question', 'title').populate('user', 'username');
+        const submissions = await Submission.find({ user: req.user.id }).populate('question', 'title difficulty').populate('updatedAt', 'updatedAt');
         if (submissions.length === 0) return res.status(404).json({ message: "Submissions Not Found!" });
         res.status(200).json(submissions);
     } catch (err) {
@@ -15,13 +15,16 @@ export const getCurrentUserSubmissions = async (req, res, next) => {
 };
 
 // @desc get all submissions by questionId
-// @route GET api/v1/submissions/:questionId
+// @route GET api/v1/submissions/question/:id
 export const getSubmissionsByQuestion = async (req, res, next) => {
     try {
         const questionId = req.params.id;
-        const submissions = await Submission.find({ question: questionId }).populate('question', 'title').populate('user', 'username');
-        if (submissions.length === 0) return res.status(404).json({ message: "Submissions Not Found!" });
-        res.status(200).json(submissions);
+        const submissions = await Submission.find({ question: questionId })
+            .select('code updatedAt')
+            .populate('question', 'title')
+            .populate('user', 'username');
+            
+            res.status(200).json(submissions);
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: 'Server Error.' });
@@ -32,10 +35,19 @@ export const getSubmissionsByQuestion = async (req, res, next) => {
 // @route GET api/v1/submissions/:id
 export const getSubmissionById = async (req, res, next) => {
     try {
-        console.log(req.params)
         const id = req.params.id;
 
-        const submission = await Submission.findOne({ _id: id });
+        const submission = await Submission.findOne({ _id: id })
+            .populate({
+                path: 'question',
+                select: 'title description difficulty acceptance sampleInput sampleOutput',
+                populate: {
+                    path: 'addedBy',
+                    select: 'username',
+                }
+            })
+            .populate('user', 'username');
+
         if (!submission) return res.status(404).json({ message: "Submission Not Found!" });
         res.status(200).json(submission);
     } catch (error) {
@@ -54,7 +66,7 @@ export const addSubmission = async (req, res, next) => {
 
         //setting status randomly
         const statusArr = ['accepted', 'rejected'];
-        const status = statusArr[Math.floor(Math.random() * 2)];
+        const status = statusArr[(Math.random() < 0.5) ? 0 : 1];
 
         // add the new submission
         const newSubmission = new Submission({
@@ -65,7 +77,7 @@ export const addSubmission = async (req, res, next) => {
         });
 
         await newSubmission.save();
-        res.status(201).json({ message: 'Submission successful!' });
+        res.status(201).json({ message: 'Submission successful!', submission: newSubmission });
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: 'Server error' });

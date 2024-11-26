@@ -8,8 +8,8 @@ router.post('/signup', signup);
 router.post('/login', login);
 
 // protected routes
-router.get('/user-details', authenticate, getUserDetail);
-router.put('/user-details', authenticate, updateUser);
-router.delete('/user-details', authenticate, deleteUser);
+router.get('/', authenticate, getUserDetail);
+router.put('/', authenticate, updateUser);
+router.delete('/', authenticate, deleteUser);
 
 export default router;

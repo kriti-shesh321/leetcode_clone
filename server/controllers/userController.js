@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import User from '../models/User.js';
 import Submission from '../models/Submission.js';
 
-dotenv.config();
+dotenv.config({ path: '.env.dev' });
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // @desc register a new user(signUp)
@@ -71,7 +71,7 @@ export const login = async (req, res, next) => {
 };
 
 // @desc get details of logged in user
-// @route GET api/v1/user/user-details
+// @route GET api/v1/user/
 export const getUserDetail = async (req, res, next) => {
     try {
         const user = await User.findOne({ _id: req.user.id });
@@ -85,7 +85,7 @@ export const getUserDetail = async (req, res, next) => {
 };
 
 // @desc update details of logged in user
-// @route PUT api/v1/user/user-details
+// @route PUT api/v1/user/
 export const updateUser = async (req, res, next) => {
     try {
         const userId = req.user.id;
@@ -101,7 +101,6 @@ export const updateUser = async (req, res, next) => {
         const currentUser = await User.findOne({ _id: userId });
         if (!currentUser) return res.status(404).json({ message: "User not found." });
 
-        //update the fields
         if (email) currentUser.email = email;
         if (password) currentUser.password = password;
         await currentUser.save();
@@ -115,17 +114,17 @@ export const updateUser = async (req, res, next) => {
 };
 
 //@desc Delete task
-//@route DELETE api/v1/user/user-details
+//@route DELETE api/v1/user/
 export const deleteUser = async (req, res, next) => {
     try {
         const userId = req.user.id;
         // Delete associated submissions
-        await Submission.deleteMany({ userId });
+        await Submission.deleteMany({ user: userId });
         
         const user = await User.findOneAndDelete({ _id: userId });
         if (!user) return res.status(404).json({ message: "User not found." });
         
-        res.status(200).json({ message: "User deleted Successfully!" }, user);
+        res.status(200).json({ message: "User deleted Successfully!" });
 
     } catch (error) {
         console.log(error);
