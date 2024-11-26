@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.diagonal-split-background{
+    background-image: -webkit-linear-gradient(80deg, #f7f9fc 25%, #374151 60%);
+  }
