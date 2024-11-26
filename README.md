@@ -1,1 +1,1 @@
-# leetcode_clone
+# a coding platform similar to leetcode.
