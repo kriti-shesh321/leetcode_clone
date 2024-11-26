@@ -1,1 +1,1 @@
-# a coding platform similar to leetcode.
+# A coding platform similar to Leetcode.
