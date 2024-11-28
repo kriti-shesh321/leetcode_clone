@@ -1,18 +1,17 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import cors from cors;
 import user from './routes/user.js';
 import question from './routes/question.js';
 import submission from './routes/submission.js';
 import authenticate from './middleware/authMiddleware.js';
-
-dotenv.config({ path: '.env.prod' });
 
 const PORT = process.env.PORT;
 const DATABASE_URL = process.env.DATABASE_URL;
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
