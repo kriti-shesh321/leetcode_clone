@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from cors;
+import cors from 'cors';
 import user from './routes/user.js';
 import question from './routes/question.js';
 import submission from './routes/submission.js';
