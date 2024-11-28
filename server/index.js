@@ -6,7 +6,7 @@ import question from './routes/question.js';
 import submission from './routes/submission.js';
 import authenticate from './middleware/authMiddleware.js';
 
-dotenv.config({ path: '.env.dev' });
+dotenv.config({ path: '.env.prod' });
 
 const PORT = process.env.PORT;
 const DATABASE_URL = process.env.DATABASE_URL;

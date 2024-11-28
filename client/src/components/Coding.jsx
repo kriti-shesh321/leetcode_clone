@@ -19,7 +19,6 @@ const Coding = ({ code = "", solutionBy = "" }) => {
             navigate(`/submissions/${data.submission._id}`);
 
         } catch (error) {
-            toast.error('Error submitting the code.');
             console.log(Error);
         }
     };

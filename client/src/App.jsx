@@ -21,7 +21,7 @@ import AddNewProblemPage from './pages/AddNewProblemPage';
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path='/' element={<MainLayout />} >
+      <Route path='/' element={<MainLayout />} errorElement={<ServerErrorPage />} >
         <Route index element={<HomePage />} />
         <Route path='/signup' element={<SignupPage />} />
         <Route path='/login' element={<LoginPage />} />
