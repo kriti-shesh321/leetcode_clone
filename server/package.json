@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "start:dev": "node --watch index.js",
-    "start:prod": "dnode index.js"
+    "start:prod": "node index.js"
   },
   "author": "",
   "license": "ISC",
