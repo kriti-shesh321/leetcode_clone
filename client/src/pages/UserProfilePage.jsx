@@ -1,7 +1,8 @@
 import { useState, useContext, useEffect } from "react";
+import { toast } from "react-toastify";
+import Spinner from "../components/Spinner";
 import AuthContext from "../context/AuthContext";
 import UserProfile from "../components/UserProfile";
-import { toast } from "react-toastify";
 
 const UserProfilePage = () => {
   const { getUserDetails, updateUserDetails } = useContext(AuthContext);
@@ -25,7 +26,7 @@ const UserProfilePage = () => {
 
   }, [getUserDetails]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
 
   const editUserDetails = async (updatedUser) => {
     try {
@@ -45,4 +46,4 @@ const UserProfilePage = () => {
     user && <UserProfile user={user} updateUser={editUserDetails}/>
   )
 }
-export default UserProfilePage
+export default UserProfilePage;
