@@ -15,7 +15,7 @@ const Navbar = () => {
                         <div
                             className="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
                         >
-                            <Link
+                            <NavLink
                                 className="flex flex-shrink-0 items-center mr-4"
                                 to="/"
                             >
@@ -35,7 +35,7 @@ const Navbar = () => {
                                     </span>
 
                                 </span>
-                            </Link>
+                            </NavLink>
                             <div className="md:ml-auto">
                                 <div className="flex space-x-2">
                                     <NavLink
