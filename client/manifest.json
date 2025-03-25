@@ -1,0 +1,17 @@
+{
+    "lang": "en-us",
+    "name": "Leetcode clone app",
+    "short_name": "Leetcode clone",
+    "description": "A basic simulation of the leetcode website.",
+    "start_url": "/",
+    "background_color": "#2f3d58",
+    "theme_color": "#2f3d58",
+    "orientation": "any",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "./src/assets/images/coding-icon.png",
+            "sizes": "512x512"
+        }
+    ]
+}
