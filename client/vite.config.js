@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'https://leetcodeclone-production.up.railway.app',
+        target: 'https://leetcode-clone-i2h1.onrender.com',
         changeOrigin: true,
       }
     }
