@@ -7,14 +7,14 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     const signup = async (details) => {
-        const { data } = await axios.post('/v1/user/signup', details);
+        const { data } = await axios.post('/user/signup', details);
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
         setUser(data.user);
     };
 
     const login = async (credentials) => {
-        const { data } = await axios.post('/v1/user/login', credentials);
+        const { data } = await axios.post('/user/login', credentials);
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
         setUser(data.user);
@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
 
     const getUserDetails = async () => {
         try {
-            const { data } = await axios.get('/v1/user');
+            const { data } = await axios.get('/user');
             return data;
         } catch (error) {
             console.log('Error fetching user details: ', error);
@@ -36,7 +36,7 @@ const AuthProvider = ({ children }) => {
 
     const updateUserDetails = async (details) => {
         try {
-            await axios.put('/v1/user', details);
+            await axios.put('/user', details);
             return;
         } catch (error) {
             console.log('Error updating user details.', error)
@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
 
     const deleteUser = async (user) => {
         try {
-            await axios.delete('/v1/user', user);
+            await axios.delete('/user', user);
             localStorage.removeItem("token");
             setUser(null);
             return;
@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
 
     const getAllProblems = async () => {
         try {
-            const { data } = await axios.get('/v1/questions');
+            const { data } = await axios.get('/questions');
             return data;
         } catch (error) {
             console.log('Error fetching questions. ', error);
@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
 
     const getProblemById = async (id) => {
         try {
-            const { data } = await axios.get(`/v1/questions/${id}`);
+            const { data } = await axios.get(`/questions/${id}`);
             return data;
         } catch (error) {
             console.log('Error fetching questions. ', error);
@@ -74,7 +74,7 @@ const AuthProvider = ({ children }) => {
 
     const addNewProblem = async (data) => {
         try {
-            await axios.post('/v1/questions', data);
+            await axios.post('/questions', data);
             return;
         } catch (error) {
             console.log('Error adding question. ', error);
@@ -83,7 +83,7 @@ const AuthProvider = ({ children }) => {
 
     const getAllUserSubmissions = async () => {
         try {
-            const { data } = await axios.get('/v1/submissions');
+            const { data } = await axios.get('/submissions');
             return data;
         } catch (error) {
             console.log('Error fetching submissions. ', error);
@@ -92,7 +92,7 @@ const AuthProvider = ({ children }) => {
 
     const getSubmissionsByQuestion = async (questionId) => {
         try {
-            const { data } = await axios.get(`/v1/submissions/question/${questionId}`);
+            const { data } = await axios.get(`/submissions/question/${questionId}`);
             return data;
         } catch (error) {
             console.log('Error fetching submissions for this question. ', error);
@@ -101,7 +101,7 @@ const AuthProvider = ({ children }) => {
 
     const getSubmissionsById = async (id) => {
         try {
-            const { data } = await axios.get(`/v1/submissions/${id}`);
+            const { data } = await axios.get(`/submissions/${id}`);
             return data;
         } catch (error) {
             console.log('Error fetching the submission. ', error);
@@ -110,7 +110,7 @@ const AuthProvider = ({ children }) => {
 
     const addNewSubmission = async (submissionData) => {
         try {
-            await axios.post('/v1/submissions', submissionData);
+            await axios.post('/submissions', submissionData);
             return;
         } catch (error) {
             console.log('Error adding submission. ', error);

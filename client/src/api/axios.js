@@ -3,8 +3,8 @@ import axios from "axios";
 const axiosInstance = axios.create({
   baseURL:
     process.env.NODE_ENV === "production"
-      ? "https://leetcode-clone-i2h1.onrender.com/api"
-      : "/api",
+      ? "https://leetcode-clone-i2h1.onrender.com/api/v1"
+      : "/api/v1",
   headers: { "Content-Type": "application/json" },
 });
 

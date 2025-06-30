@@ -10,7 +10,6 @@ export default defineConfig({
       '/api': {
         target: 'https://leetcode-clone-i2h1.onrender.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
       }
     }
   }

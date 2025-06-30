@@ -1,20 +1,16 @@
-import React from 'react';
-import HashLoader from 'react-spinners/HashLoader';
-
-const override = {
-    display: 'block',
-    margin: '100px auto',
-}
+import BarLoader from 'react-spinners/BarLoader';
 
 const Spinner = ({ loading }) => {
     return (
-        <HashLoader
-            color='violet'
-            loading={loading}
-            cssOverride={override}
-            size={100}
-        />
-    )
-}
+        <div className="w-full h-[calc(100vh-5rem)] flex items-center justify-center">
+            <BarLoader
+                color='green'
+                loading={loading}
+                height={5}
+                width={300}
+            />
+        </div>
+    );
+};
 
 export default Spinner;

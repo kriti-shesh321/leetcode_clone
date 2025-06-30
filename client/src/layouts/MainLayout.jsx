@@ -8,10 +8,12 @@ const MainLayout = () => {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <div className="min-h-screen">
+        <Outlet />
+      </div>
       <Footer />
       <ToastContainer />
     </>
-  )
-}
+  );
+};
 export default MainLayout;
