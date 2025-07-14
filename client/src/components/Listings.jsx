@@ -10,7 +10,7 @@ const Listings = ({ problemPage, heading, data, columns, loading }) => {
     loading
       ? <Spinner />
       : (
-        <section className="bg-gray-700 md:h-screen p-20 border-t">
+        <section className="bg-gray-700 min-h-screen py-10 lg:p-20 border-t">
           <div className="container bg-gray-800 mx-auto p-3 sm:p-14 md:w-4/5">
             {!data
               ? <h2 className="text-3xl font-extrabold text-gray-200 pb-3">Problems Not found.</h2>
@@ -44,7 +44,7 @@ const Listings = ({ problemPage, heading, data, columns, loading }) => {
                             >
                               {problemPage
                                 ? <>
-                                  <td className="pt-2 px-2 md:p-2">
+                                  <td className="pt-3 px-2 lg:p-2">
                                     <Link
                                       to={user ? `/problems/${entry._id}` : '/login'}
                                       className="hover:text-white hover:underline"
@@ -52,11 +52,11 @@ const Listings = ({ problemPage, heading, data, columns, loading }) => {
                                       {entry.title}
                                     </Link>
                                   </td>
-                                  <td className="pt-2 px-2 md:p-2">{entry.difficulty}</td>
-                                  <td className="pt-2 px-2 md:p-2">{entry.acceptance}</td>
+                                  <td className="pt-3 px-2 lg:p-2">{entry.difficulty}</td>
+                                  <td className="pt-3 px-2 lg:p-2">{entry.acceptance}</td>
                                 </>
                                 : <>
-                                  <td className="pt-2 px-2 md:p-2">
+                                  <td className="pt-3 px-2 lg:p-2">
                                     <Link
                                       to={user ? `/submissions/${entry._id}` : '/login'}
                                       className="hover:text-white hover:underline"
@@ -64,8 +64,8 @@ const Listings = ({ problemPage, heading, data, columns, loading }) => {
                                       {entry.question}
                                     </Link>
                                   </td>
-                                  <td className="pt-2 px-2 md:p-2">{entry.difficulty}</td>
-                                  <td className="pt-2 px-2 md:p-2">{entry.submittedAt}</td>
+                                  <td className="pt-3 px-2 lg:p-2">{entry.difficulty}</td>
+                                  <td className="pt-3 px-2 lg:p-2">{entry.submittedAt}</td>
                                 </>
                               }
                             </tr>

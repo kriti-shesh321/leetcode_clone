@@ -9,11 +9,11 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="bg-gray-700 pt-2">
-                <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <nav className="bg-gray-700 pt-2 w-full">
+                <div className="mx-auto w-full md:max-w-7xl px-2 sm:px-6 lg:px-8">
                     <div className="flex h-20 items-center justify-between">
                         <div
-                            className="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
+                            className="w-full flex flex-1 items-center justify-center md:items-stretch md:justify-start"
                         >
                             <NavLink
                                 className="flex flex-shrink-0 items-center mr-4"
@@ -36,6 +36,7 @@ const Navbar = () => {
 
                                 </span>
                             </NavLink>
+
                             <div className="md:ml-auto">
                                 <div className="flex space-x-2">
                                     <NavLink
@@ -72,7 +73,7 @@ const Navbar = () => {
                                                 {user.isAdmin &&
                                                     <NavLink
                                                         to="/problems/add"
-                                                        className={linkClass}
+                                                        className="text-white hover:bg-gray-900 hover:text-white px-3 py-1"
                                                     >
                                                         Add Problem
                                                     </NavLink>
@@ -87,7 +88,7 @@ const Navbar = () => {
                                                     to="/my-profile"
                                                     className={linkClass}
                                                 >
-                                                    🧑⚙️
+                                                    Profile
                                                 </NavLink>
                                             </>
                                         )
@@ -100,7 +101,7 @@ const Navbar = () => {
                 </div>
             </nav >
         </>
-    )
-}
+    );
+};
 
 export default Navbar;
